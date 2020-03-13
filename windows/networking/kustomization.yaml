@@ -1,0 +1,4 @@
+resources:
+- service.yaml
+- virtualservice.yaml
+- destinationrule.yaml

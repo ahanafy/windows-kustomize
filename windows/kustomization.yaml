@@ -1,0 +1,4 @@
+namespace: windows
+bases:
+- base
+- networking

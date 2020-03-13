@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: iis-2019
+  name: iis-2019
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: iis-2019
+  template:
+    metadata:
+      labels:
+        app: iis-2019
+      name: iis-2019
+    spec:
+     containers:
+      - image: mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019
+        imagePullPolicy: IfNotPresent
+        name: iis
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "1"
+            memory: 800Mi
+          requests:
+            cpu: 100m
+            memory: 300Mi
+     nodeSelector:
+      beta.kubernetes.io/os: windows
